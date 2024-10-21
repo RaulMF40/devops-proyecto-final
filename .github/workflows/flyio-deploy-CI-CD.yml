@@ -1,0 +1,31 @@
+name: Fly.io CI/CD
+
+on:
+  push:
+    branches:
+      - deploy-gitactions
+  pull_request:
+    branches:
+      - deploy-gitactions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Cristian esta es la version que tengo instalada
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+
+
