@@ -1,0 +1,31 @@
+name: Deploy Docker Image Temp.
+
+on:
+  workflow_run:
+    workflows: [ "Deploy Docker Image" ]
+    types:
+      - completed
+
+jobs:
+  deploy_temp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+         
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Run Docker Container
+        run: |
+          docker run --name dockerfront --rm -d -p 3000:3000 raulmoya/dockerfront:2.0.0
+          sleep 10
+          curl http://localhust:3000
+
+      - name: Stop Docker Container
+        run: |
+          docker stop dockerfront

@@ -1,8 +1,11 @@
 {
   "name": "devops-proyecto-final",
   "version": "1.0.0",
-  "description": "Proyecto-Final-Curso-Devops",
-  "main": "index.js",
+  "description": "devops-proyecto-final",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
     "start": "node src/index.js",
     "test": "jest"
@@ -14,8 +17,5 @@
     "express": "^4.21.1",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
-  },
-  "devDependencies": {
-    "@flydotio/dockerfile": "^0.5.9"
   }
 }
