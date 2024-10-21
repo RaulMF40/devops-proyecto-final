@@ -13,10 +13,10 @@ name: Deploy Docker Image
 on:
   push:
     branches:
-      - docker-front-frontend
+      - docker-front-backend
   pull_request:
     branches:
-      - docker-front-frontend
+      - docker-front-backend
 
 jobs:
   build:
