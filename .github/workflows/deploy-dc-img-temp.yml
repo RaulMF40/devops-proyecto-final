@@ -24,7 +24,7 @@ jobs:
         run: |
           docker run --name dockerfront --rm -d -p 3000:3000 raulmoya/dockerfront:2.0.0
           sleep 10
-          curl http://localhust:3000
+          curl http://localhost:3000
 
       - name: Stop Docker Container
         run: |
