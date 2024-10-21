@@ -69,7 +69,7 @@ jobs:
           context: .
           file: ./Dockerfile.front
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: raulmoya/dockerfront:v2.0.0
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation
