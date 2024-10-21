@@ -6,3 +6,4 @@ una de las imágenes que subiste a DockerHub. El objetivo es que GitHub Actions 
 
 # CRISTIAN EN ESTE EJERCICIO DE DOCKER he creado dos dockerfile separados, ya que no sabia si eran microservicios o no, lo he pensado , ya que no especificaba lo de micro, pero de todas maneras lo añadire más adelante para mejorar el proyecto. 
 
+# hacer pruebas de la segunda parte
