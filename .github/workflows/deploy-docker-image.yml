@@ -63,7 +63,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: raulmoya/dockerfront:v2.0.0
+          images: raulmoya/dockerfront:2.0.0
 
       - name: Build and push Frontend Docker image
         id: push
@@ -72,7 +72,7 @@ jobs:
           context: .
           file: ./Dockerfile.front
           push: true
-          tags: raulmoya/dockerfront:v2.0.0
+          tags: raulmoya/dockerfront:2.0.0
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation
