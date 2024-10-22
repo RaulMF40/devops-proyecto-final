@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for devops-proyecto-final on 2024-10-21T19:16:49+02:00
+# fly.toml app configuration file generated for devops-proyecto-final-deploy-jenkins on 2024-10-22T23:49:26+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'devops-proyecto-final'
+app = 'devops-proyecto-final-deploy-jenkins'
 primary_region = 'mad'
 
 [build]
