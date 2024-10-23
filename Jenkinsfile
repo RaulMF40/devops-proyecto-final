@@ -12,6 +12,12 @@ pipeline {
     triggers{
         githubPush()
     }
+
+    stage('Pintar credencial'){
+            steps{
+                echo 'Hola esta es mi credencial: $FLY_API_TOKENS'
+            }
+        }
     
     stages {
 
@@ -19,14 +25,16 @@ pipeline {
             steps {
                 echo 'Installing Fly.io...'
                 withCredentials([string(credentialsId: 'FLY_API_TOKENS', variable: 'FLY_API_TOKENS')]) {
-                    sh '''
+                    script {
+                      sh '''
                         # Instalar flyctl si no está ya disponible
                         curl -L https://fly.io/install.sh | sh
                         export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                         export PATH="$FLYCTL_INSTALL/bin:$PATH"
                         # Autenticarse con Fly.io
-                        fly auth login --token $FLY_API_TOKENS
+                        fly auth token $FLY_API_TOKENS
                     '''
+                    }
                 }
             }
         }
@@ -41,12 +49,6 @@ pipeline {
             steps{
                 echo 'Running test'
                 sh "npm run test"
-            }
-        }
-
-        stage('Pintar credencial'){
-            steps{
-                echo 'Hola esta es mi credencial: $FLY_API_TOKENS'
             }
         }
 
