@@ -1,7 +1,7 @@
 {
-  "name": "devops-proyecto-final",
+  "name": "devops-proyecto-final-deploy-jenkins",
   "version": "1.0.0",
-  "description": "Proyecto-Final-Curso-Devops",
+  "description": "Proyecto-Final-Curso-Devops-Deploy-Jenkins",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
