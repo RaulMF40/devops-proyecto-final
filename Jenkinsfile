@@ -16,23 +16,23 @@ pipeline {
     stages {
         stage('Pintar credencial') {
             steps {
-                echo "Hola, esta es mi credencial para Fly.io" 
+                echo "Hola, se esta mi credencial para Fly.io" 
             }
         }
 
-        stage('Install Fly.io') {
+        stage ('Install fly.io') {
             steps {
-                echo 'Installing Fly.io...'
-                sh '''
-                    # Instalar flyctl si no está ya disponible
-                    curl -L https://fly.io/install.sh | sh
-                    export FLYCTL_INSTALL="/var/jenkins_home/.fly"
-                    export PATH="$FLYCTL_INSTALL/bin:$PATH"
-                    # Autenticarse con Fly.io usando el token correcto
-                    fly auth token ${FLY_API_TOKENS}
-                '''
+               echo 'Installing Fly.io'
+               withCredentials([string(credentialsId: 'FLY_API_TOKENS', variable: 'FLY_API_TOKENS')]) {
+                  script {
+                   sh('curl -L https://fly.io/install.sh | sh')
+                   env.FLYCTL_INSTALL = sh('echo "/var/jenkins_home/.fly"')
+                   env.PATH = sh('echo "$FLYCTL_INSTALL/bin:$PATH"')
+                   env.FLY_API_TOKENS = sh('flyctl auth token ${env.FLY_API_TOKENS}')
             }
+          }
         }
+      }
         
         stage('Install dependencies') {
             steps {
@@ -50,8 +50,11 @@ pipeline {
 
         stage('Deploy to Fly.io') {
             steps {
-                echo 'Deploying the project to Fly.io...'
-                sh '/var/jenkins_home/.fly/bin/flyctl deploy --app devops-proyecto-final-deploy-jenkins --remote-only'
+                sh '''
+                //#export FLYCTL_INSTALL="/var/jenkins_home/.fly"
+                //#export PATH="$FLYCTL_INSTALL/bin:$PATH"
+                flyctl deploy --app devops-proyecto-final-deploy-jenkins --remote-only
+                '''
             }
         }
     }
