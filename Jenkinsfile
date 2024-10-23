@@ -9,7 +9,7 @@ pipeline {
     }
 
     tools {
-        nodejs "nodeprof"
+        nodejs "nodejs-18"
     }
 
     triggers{
