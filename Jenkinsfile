@@ -2,11 +2,11 @@ pipeline {
     agent any 
 
     environment {
-        FLY_API_TOKENS = credentials('FLY_API_TOKENS')
+        FLY_API_TOKENS=credentials('FLY_API_TOKENS')
     }
 
     tools {
-        nodejs "nodejs-18"
+        nodejs "nodeprof"
     }
 
     triggers {
@@ -50,6 +50,7 @@ pipeline {
 
         stage('Deploy to Fly.io') {
             steps {
+                echo 'Deploying to Fly.io'
                 sh '''
                 //#export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                 //#export PATH="$FLYCTL_INSTALL/bin:$PATH"
