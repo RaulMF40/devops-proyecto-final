@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Pintar credencial') {
             steps {
-                echo "Hola, se esta mi credencial para Fly.io" 
+                echo 'Hola esta es mi credencial: $FLY_API_TOKENS'
             }
         }
 
