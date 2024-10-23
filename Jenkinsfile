@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Pintar credencial') {
             steps {
-                echo "Hola, esta es mi credencial: ${FLY_API_TOKENS}" 
+                echo "Hola, esta es mi credencial para Fly.io" 
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                     export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                     export PATH="$FLYCTL_INSTALL/bin:$PATH"
                     # Autenticarse con Fly.io usando el token correcto
-                    fly auth token $FLY_API_TOKENS
+                    fly auth token ${FLY_API_TOKENS}
                 '''
             }
         }
