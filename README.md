@@ -11,3 +11,6 @@ un contenedor Docker.
 automáticamente en Fly.io.
 
 # realizando cambios en el jenkinsfille 
+
+# CRISTIAN AQUI EN EL JENKINS, OTRA VEZ TENGO EL MISMO PROBLEMA. LO QUE ES EL DEPLOY Y WEBHOOK, SALE BIEN, PERO A LA HORA DE JENKINS, LOS ERRORES. 
+
