@@ -25,10 +25,10 @@ pipeline {
                echo 'Installing Fly.io'
                withCredentials([string(credentialsId: 'FLY_API_TOKENS', variable: 'FLY_API_TOKENS')]) {
                   script {
-                   sh('curl -L https://fly.io/install.sh | sh')
-                   env.FLYCTL_INSTALL = sh('echo "/var/jenkins_home/.fly"')
-                   env.PATH = sh('echo "$FLYCTL_INSTALL/bin:$PATH"')
-                   env.FLY_API_TOKENS = sh('flyctl auth token ${env.FLY_API_TOKENS}')
+                   bat('curl -L https://fly.io/install.sh | sh')
+                   env.FLYCTL_INSTALL = bat('echo "/var/jenkins_home/.fly"')
+                   env.PATH = bat('echo "$FLYCTL_INSTALL/bin:$PATH"')
+                   env.FLY_API_TOKENS = bat('flyctl auth token ${env.FLY_API_TOKENS}')
             }
           }
         }
@@ -37,21 +37,21 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run test') {
             steps {
                 echo 'Running test...'
-                sh "npm run test"
+                bat "npm run test"
             }
         }
 
         stage('Deploy to Fly.io') {
             steps {
                 echo 'Deploying to Fly.io'
-                sh '''
+                bat '''
                 //#export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                 //#export PATH="$FLYCTL_INSTALL/bin:$PATH"
                 flyctl deploy --app devops-proyecto-final-deploy-jenkins --remote-only
