@@ -25,7 +25,7 @@ pipeline {
                         export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                         export PATH="$FLYCTL_INSTALL/bin:$PATH"
                         # Autenticarse con Fly.io
-                        flyctl auth token $FLY_API_TOKENS
+                        fly auth token $FLY_API_TOKENS
                     '''
                 }
             }
