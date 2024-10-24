@@ -1,5 +1,5 @@
 {
-  "name": "devops-proyecto-final",
+  "name": "devops-proyecto-final-back",
   "version": "1.0.0",
   "description": "devops-proyecto-final-dockerfrontback",
   "main": "jest.config.js",

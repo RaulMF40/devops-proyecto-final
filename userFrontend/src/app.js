@@ -4,7 +4,7 @@ const app = express()
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Hello World Docker' })
+  res.status(200).json({ message: 'Hello World Docker Frontend' })
 })
 
 app.post('/echo', (req, res) => {
