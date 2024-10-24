@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        FLY_API_TOKENS=credentials('FLY_API_TOKENS')
+        FLY_API_TOKEN=credentials('FLY_API_TOKEN')
     }
 
     tools {
@@ -16,19 +16,19 @@ pipeline {
     stages {
         stage('Pintar credencial') {
             steps {
-                echo 'Hola esta es mi credencial: ${env.FLY_API_TOKENS}'
+                echo 'Hola esta es mi credencial: ${env.FLY_API_TOKEN}'
             }
         }
 
         stage ('Install fly.io') {
             steps {
                echo 'Installing Fly.io'
-               withCredentials([string(credentialsId: 'FLY_API_TOKENS', variable: 'FLY_API_TOKENS')]) {
+               withCredentials([string(credentialsId: 'FLY_API_TOKEN', variable: 'FLY_API_TOKEN')]) {
                   script {
                    sh('curl -L https://fly.io/install.sh | sh')
                    env.FLYCTL_INSTALL = "/var/jenkins_home/.fly"
                    env.PATH = "${env.FLYCTL_INSTALL}/bin:${env.PATH}"
-                   sh 'flyctl auth token ${FLY_API_TOKENS}'
+                   sh 'flyctl auth token ${FLY_API_TOKEN}'
             }
           }
         }
@@ -54,7 +54,7 @@ pipeline {
                 sh '''
                 //#export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                 //#export PATH="$FLYCTL_INSTALL/bin:$PATH"
-                flyctl deploy --app devops-proyecto-final-deploy-jenkins --remote-only
+                flyctl deploy --app devops-proyecto-final-dockerjenkins --remote-only
                 '''
             }
         }
