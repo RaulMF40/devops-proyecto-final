@@ -52,8 +52,8 @@ pipeline {
             steps {
                 echo 'Deploying to Fly.io'
                 sh '''
-                //#export FLYCTL_INSTALL="/var/jenkins_home/.fly"
-                //#export PATH="$FLYCTL_INSTALL/bin:$PATH"
+                export FLYCTL_INSTALL="/var/jenkins_home/.fly"
+                export PATH="$FLYCTL_INSTALL/bin:$PATH"
                 flyctl deploy --app devops-proyecto-final-dockerjenkins --remote-only
                 '''
             }
