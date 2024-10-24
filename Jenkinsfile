@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Pintar credencial') {
             steps {
-                echo 'Hola esta es mi credencial: $FLY_API_TOKENS'
+                echo 'Hola esta es mi credencial: ${env.FLY_API_TOKENS}'
             }
         }
 
@@ -26,9 +26,9 @@ pipeline {
                withCredentials([string(credentialsId: 'FLY_API_TOKENS', variable: 'FLY_API_TOKENS')]) {
                   script {
                    sh('curl -L https://fly.io/install.sh | sh')
-                   env.FLYCTL_INSTALL = sh('echo "/var/jenkins_home/.fly"')
-                   env.PATH = sh('echo "$FLYCTL_INSTALL/bin:$PATH"')
-                   env.FLY_API_TOKENS = sh('flyctl auth token ${env.FLY_API_TOKENS}')
+                   env.FLYCTL_INSTALL = "/var/jenkins_home/.fly"
+                   env.PATH = "${env.FLYCTL_INSTALL}/bin:${env.PATH}"
+                   sh 'flyctl auth token ${env.FLY_API_TOKENS}'
             }
           }
         }
