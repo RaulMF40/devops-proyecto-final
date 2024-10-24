@@ -3,16 +3,13 @@ services:
     container_name: user-frontend-volumes
     build: ./userFrontend
     image: raulmoya/trabajo-final-dockerfrontend:v2.0.0
-    # volumes:
-      # - ./userFrontend:/opt
     ports:
       - '9006:3000'
+
   userBackend:
     container_name: user-backend-volumes
     build: ./userBackend
     image: raulmoya/trabajo-final-dockerbackend:v2.0.0
-    # volumes:
-      # - ./userBackend:/opt
     ports:
       - '9007:3000'
   
