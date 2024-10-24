@@ -28,7 +28,7 @@ pipeline {
                    sh('curl -L https://fly.io/install.sh | sh')
                    env.FLYCTL_INSTALL = "/var/jenkins_home/.fly"
                    env.PATH = "${env.FLYCTL_INSTALL}/bin:${env.PATH}"
-                   sh 'flyctl auth token ${env.FLY_API_TOKENS}'
+                   sh 'flyctl auth token ${FLY_API_TOKENS}'
             }
           }
         }
